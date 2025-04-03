@@ -1,6 +1,6 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { images } from "../../constants/images";
+import logo from "../../assets/beads.jpg";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
@@ -31,7 +31,7 @@ const HeroSection = () => {
         {/* Image - Full width on mobile, adjusted on larger screens */}
         <div className="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center">
           <img
-            src={images.beads}
+            src={logo}
             alt="Premium Comfort Shoe"
             className="w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full object-cover shadow-lg transition-all duration-300 hover:scale-105"
           />

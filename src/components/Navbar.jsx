@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/Sikretif_logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ const Navbar = () => {
           {/* Logo on the left */}
           <div className="flex-shrink-0">
             <NavLink to="/" >
-              <h1 className="text-2xl text-bold">SIKRETIF</h1>
+            <img src={logo} alt="sikretif_logo" className="h-24 w-24" />
             </NavLink>
           </div>
 
@@ -92,28 +93,28 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `text-gray-800 hover:text-orange-600 ${
-                  isActive ? "font-bold text-orange-600" : ""
+                `text-gray-800 hover:text-primary ${
+                  isActive ? "font-bold text-primary" : ""
                 }`
               }
             >
               Home
             </NavLink>
             <NavLink
-              to="/about"
+              to="/products"
               className={({ isActive }) =>
-                `text-gray-800 hover:text-orange-600 ${
-                  isActive ? "font-bold text-orange-600" : ""
+                `text-gray-800 hover:text-primary ${
+                  isActive ? "font-bold text-primary" : ""
                 }`
               }
             >
-              About
+              Products
             </NavLink>
             <NavLink
-              to="/service"
+              to="/services"
               className={({ isActive }) =>
-                `text-gray-800 hover:text-orange-600 ${
-                  isActive ? "font-bold text-orange-600" : ""
+                `text-gray-800 hover:text-primary ${
+                  isActive ? "font-bold text-primary" : ""
                 }`
               }
             >
@@ -122,8 +123,8 @@ const Navbar = () => {
             <NavLink
               to="/article"
               className={({ isActive }) =>
-                `text-gray-800 hover:text-orange-600 ${
-                  isActive ? "font-bold text-orange-600" : ""
+                `text-gray-800 hover:text-primary ${
+                  isActive ? "font-bold text-primary" : ""
                 }`
               }
             >

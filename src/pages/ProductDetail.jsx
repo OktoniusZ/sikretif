@@ -11,6 +11,7 @@ import {
   FiPlus,
   FiMinus,
 } from "react-icons/fi";
+import UnderDevelopmentPopup from "../components/UnderDevelopment";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [selectedImage, setSelectedImage] = useState(product.image);
-
+  const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top when the component mounts
   }, []);
@@ -31,6 +32,10 @@ const ProductDetail = () => {
     fabric: false,
     delivery: false,
   });
+
+  const handleActionClick = () => {
+    setShowPopup(true);
+  };
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
@@ -167,10 +172,16 @@ const ProductDetail = () => {
 
           {/* CTA Buttons */}
           <div className="grid grid-cols-2 gap-4 pt-4">
-            <button className="border-2 border-black rounded-lg py-3 font-medium hover:bg-gray-50 transition">
+            <button
+              onClick={handleActionClick}
+              className="border-2 border-black rounded-lg py-3 font-medium hover:bg-gray-50 active:bg-gray-100"
+            >
               Add to Cart
             </button>
-            <button className="bg-black text-white rounded-lg py-3 font-medium hover:bg-gray-800 transition">
+            <button
+              onClick={handleActionClick}
+              className="bg-black text-white rounded-lg py-3 font-medium hover:bg-gray-800 active:bg-gray-900"
+            >
               Buy Now
             </button>
           </div>
@@ -224,6 +235,11 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      <UnderDevelopmentPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        product={product} // Pass product for dynamic WhatsApp message
+      />
     </motion.div>
   );
 };

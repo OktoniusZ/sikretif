@@ -8,11 +8,11 @@ export const products = [
     colors: ["#000000", "#3B82F6", "#EF4444"],
     isNew: true,
     image: images.bunga_1a,
-    additionalImages: [images.bunga_1b, images.bunga_1c, images.bunga_1d], // Add more images here
+    additionalImages: [images.bunga_1b, images.bunga_1c, images.bunga_1d],
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    category: "Flower",
+    category: "flowers",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const products = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    category: "Flower",
+    category: "flowers",
   },
   {
     id: 3,
@@ -38,6 +38,84 @@ export const products = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    category: "Flower",
+    category: "flowers",
+  },
+  {
+    id: 4,
+    name: "Classic Comfort",
+    price: "Rp99.99",
+    colors: ["#6B7280", "#10B981"],
+    isNew: false,
+    image: images.bracelet_1a,
+    additionalImages: [],
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    category: "bracelets",
+  },
+  {
+    id: 5,
+    name: "Classic Comfort",
+    price: "Rp99.99",
+    colors: ["#6B7280", "#10B981"],
+    isNew: false,
+    image: images.bracelet_2a,
+    additionalImages: [],
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    category: "bracelets",
+  },
+  {
+    id: 6,
+    name: "Classic Comfort",
+    price: "Rp99.99",
+    colors: ["#6B7280", "#10B981"],
+    isNew: false,
+    image: images.bracelet_3a,
+    additionalImages: [],
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    category: "bracelets",
+  },
+  {
+    id: 7,
+    name: "Classic Comfort",
+    price: "Rp99.99",
+    colors: ["#6B7280", "#10B981"],
+    isNew: false,
+    image: images.bags_1a,
+    additionalImages: [],
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    category: "bags",
+  },
+  {
+    id: 8,
+    name: "Classic Comfort",
+    price: "Rp99.99",
+    colors: ["#6B7280", "#10B981"],
+    isNew: false,
+    image: images.bracelet_3a,
+    additionalImages: [],
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    category: "bags",
+  },
+  {
+    id: 9,
+    name: "Classic Comfort",
+    price: "Rp99.99",
+    colors: ["#6B7280", "#10B981"],
+    isNew: false,
+    image: images.bracelet_3a,
+    additionalImages: [],
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    category: "bags",
   },
 ];
