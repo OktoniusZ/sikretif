@@ -3,7 +3,7 @@ const imageModules = import.meta.glob([
   "../assets/flowers/bunga*.jpg",
   "../assets/bracelets/bracelet*.jpg",
   "../assets/bags/bags*.jpg",
-]);
+],{eager: true});
 
 const images = {};
 
