@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FiFilter, FiX, FiChevronDown } from "react-icons/fi";
 import ProductCard from "../components/home/ProductCard";
 import { products } from "../constants/products";
-import beads from "../assets/beads.jpg"; 
+import beads from "../../public/images/beads.jpg";
 
 const ProductsPage = () => {
   const [activeCategory, setActiveCategory] = useState("all");

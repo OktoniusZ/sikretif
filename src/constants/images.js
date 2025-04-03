@@ -1,44 +1,28 @@
-// src/assets/flowerImages.js
-const imageModules = import.meta.glob([
-  "../assets/flowers/bunga*.jpg",
-  "../assets/bracelets/bracelet*.jpg",
-  "../assets/bags/bags*.jpg",
-],{eager: true});
+// src/utils/imageImports.js
+const numbers = [1, 2, 3, 4];
+const letters = ['a', 'b', 'c', 'd'];
 
 const images = {};
 
+// Generate flower image paths
+numbers.forEach(num => {
+  letters.forEach(letter => {
+    images[`bunga_${num}${letter}`] = `/images/flowers/bunga${num}-${letter}.jpg`;
+  });
+});
 
-// Process all matched images
-for (const path in imageModules) {
-  // Handle flowers (bunga)
-  if (path.includes("/flowers/")) {
-    const matches = path.match(/bunga(\d+)-([a-z])\.jpg$/);
-    if (matches) {
-      const [, number, letter] = matches;
-      const key = `bunga_${number}${letter}`;
-      images[key] = new URL(path, import.meta.url).href;
-    }
-  }
+// Generate bracelet image paths
+numbers.forEach(num => {
+  letters.forEach(letter => {
+    images[`bracelet_${num}${letter}`] = `/images/bracelets/bracelet${num}-${letter}.jpg`;
+  });
+});
 
-  // Handle bracelets
-  else if (path.includes("/bracelets/")) {
-    const matches = path.match(/bracelet(\d+)-([a-z])\.jpg$/);
-    if (matches) {
-      const [, number, letter] = matches;
-      const key = `bracelet_${number}${letter}`;
-      images[key] = new URL(path, import.meta.url).href;
-    }
-  }
-
-  // handle bags
-  else if (path.includes("/bags/")) {
-    const matches = path.match(/bags(\d+)-([a-z])\.jpg$/);
-    if (matches) {
-      const [, number, letter] = matches;
-      const key = `bags_${number}${letter}`;
-      images[key] = new URL(path, import.meta.url).href;
-    }
-  }
-}
+// Generate bags image paths
+numbers.forEach(num => {
+  letters.forEach(letter => {
+    images[`bags_${num}${letter}`] = `/images/bags/bags${num}-${letter}.jpg`;
+  });
+});
 
 export { images };

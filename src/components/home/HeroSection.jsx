@@ -1,6 +1,6 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
-import logo from "../../assets/beads.jpg";
+import logo from "../../../public/images/beads.jpg"; 
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
