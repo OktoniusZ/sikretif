@@ -1,7 +1,8 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
-import logo from "../../../public/images/beads.jpg"; 
+import logo from "../../../public/images/beads.jpg";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -23,8 +24,9 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Explore Collection
-            {/* <FiArrowRight className="ml-2" /> */}
+            <NavLink to="/products" >
+              Explore Collection
+            </NavLink>
           </motion.button>
         </div>
 

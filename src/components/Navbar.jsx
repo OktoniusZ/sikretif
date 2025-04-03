@@ -55,7 +55,7 @@ const Navbar = () => {
               Services
             </NavLink>
             <NavLink
-              to="/article"
+              to="/contact"
               className={({ isActive }) =>
                 `text-gray-800 hover:text-primary ${
                   isActive ? "font-bold text-primary" : ""
@@ -121,14 +121,14 @@ const Navbar = () => {
               Services
             </NavLink>
             <NavLink
-              to="/article"
+              to="/contact"
               className={({ isActive }) =>
                 `text-gray-800 hover:text-primary ${
                   isActive ? "font-bold text-primary" : ""
                 }`
               }
             >
-              Articles
+              Contact
             </NavLink>
           </div>
         </div>

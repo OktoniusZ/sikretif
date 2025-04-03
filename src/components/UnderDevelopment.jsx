@@ -6,15 +6,14 @@ const UnderDevelopmentPopup = ({ isOpen, onClose, product }) => {
 
   const whatsappNumber = "1234567890"; // Replace with your number
   const whatsappMessage = `Hi, I'd like to place an order for: ${product.name} (${product.price})`;
-
   return (
     <div className="fixed inset-0 z-50">
       {/* Blurred Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-opacity-30 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Popup Container */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
         <div className="bg-white rounded-lg max-w-md w-full p-4 shadow-xl relative">
@@ -41,7 +40,9 @@ const UnderDevelopmentPopup = ({ isOpen, onClose, product }) => {
           {/* Actions */}
           <div className="flex flex-col space-y-2">
             <a
-              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                whatsappMessage
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded font-medium text-sm"

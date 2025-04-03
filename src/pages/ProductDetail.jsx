@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { products } from "../constants/products";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import {
   FiArrowLeft,
-  FiHeart,
-  FiShoppingBag,
   FiChevronDown,
   FiChevronUp,
   FiPlus,
   FiMinus,
 } from "react-icons/fi";
 import UnderDevelopmentPopup from "../components/UnderDevelopment";
+import Swal from "sweetalert2";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const product = products.find((p) => p.id === parseInt(id));
-  const [selectedColor, setSelectedColor] = useState(0);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [selectedImage, setSelectedImage] = useState(product.image);
   const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top when the component mounts
   }, []);
-
   const [quantity, setQuantity] = useState(1);
   const [expandedSections, setExpandedSections] = useState({
     description: true,
@@ -32,10 +29,6 @@ const ProductDetail = () => {
     fabric: false,
     delivery: false,
   });
-
-  const handleActionClick = () => {
-    setShowPopup(true);
-  };
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
@@ -57,6 +50,34 @@ const ProductDetail = () => {
       </div>
     );
   }
+  const whatsappNumber = "00000"; // Replace with your number
+  const whatsappMessage = `Hi, I'd like to place an order for: ${product.name} (${product.price})`;
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
+  const showAlert = () => {
+    Swal.fire({
+      title: "Feature Coming Soon!",
+      text: "Our online checkout is under development. You can order via WhatsApp instead.",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonText: "Chat on WhatsApp",
+      cancelButtonText: "Continue Browsing",
+      customClass: {
+        popup: "rounded-lg shadow-lg",
+        title: "text-lg font-bold",
+        confirmButton:
+          "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md",
+        cancelButton:
+          "border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-md",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.open(whatsappLink, "_blank");
+      }
+    });
+  };
 
   return (
     <motion.div
@@ -173,13 +194,13 @@ const ProductDetail = () => {
           {/* CTA Buttons */}
           <div className="grid grid-cols-2 gap-4 pt-4">
             <button
-              onClick={handleActionClick}
+              onClick={showAlert}
               className="border-2 border-black rounded-lg py-3 font-medium hover:bg-gray-50 active:bg-gray-100"
             >
               Add to Cart
             </button>
             <button
-              onClick={handleActionClick}
+              onClick={showAlert}
               className="bg-black text-white rounded-lg py-3 font-medium hover:bg-gray-800 active:bg-gray-900"
             >
               Buy Now

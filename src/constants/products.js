@@ -98,7 +98,7 @@ export const products = [
     price: "Rp99.99",
     colors: ["#6B7280", "#10B981"],
     isNew: false,
-    image: images.bracelet_3a,
+    image: images.bags_2a,
     additionalImages: [],
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
@@ -111,7 +111,7 @@ export const products = [
     price: "Rp99.99",
     colors: ["#6B7280", "#10B981"],
     isNew: false,
-    image: images.bracelet_3a,
+    image: images.bags_3a,
     additionalImages: [],
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
