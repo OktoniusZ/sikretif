@@ -5,6 +5,9 @@ import ContactCard from "../components/contact/ContactCard";
 import ContactCTA from "../components/contact/ContactCTA";
 
 const ContactPage = () => {
+  const whatsappNumber = "+6281324582425";
+  const email = "sikretif7@gmail.com";
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8 py-12">
       {/* Centered card container */}
@@ -20,32 +23,62 @@ const ContactPage = () => {
         />
 
         {/* Three contact cards */}
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-          <ContactCard
-            icon={FaWhatsapp}
-            contactInfo="(+67) 0422 332 235"
-            label="WhatsApp"
-            iconColor="purple"
-            hoverColor="purple"
-          />
+          <button
+            onClick={() =>
+              window.open(
+                `https://wa.me/${whatsappNumber}`,
+                "_blank",
+                "noopener,noreferrer"
+              )
+            }
+            className="cursor-pointer"
+          >
+            <ContactCard
+              icon={FaWhatsapp}
+              contactInfo={whatsappNumber}
+              label="WhatsApp"
+              iconColor="purple"
+              hoverColor="purple"
+              whatsappNumber={whatsappNumber}
+            />
+          </button>
 
-          <ContactCard
-            icon={FaEnvelope}
-            contactInfo="hello@quillow.edu"
-            label="Email"
-            iconColor="pink"
-            hoverColor="pink"
-          />
+          <button
+            onClick={() =>
+              window.open(`mailto:${email}`, "_blank", "noopener,noreferrer")
+            }
+            className="cursor-pointer"
+          >
+            <ContactCard
+              icon={FaEnvelope}
+              contactInfo={email}
+              label="Email"
+              iconColor="pink"
+              hoverColor="pink"
+            />
+          </button>
 
-          <ContactCard
-            icon={FaMapMarkerAlt}
-            contactInfo="San Francisco, CA"
-            label="Headquarters"
-            iconColor="yellow"
-            hoverColor="yellow"
-          />
+          <button
+            onClick={() =>
+              window.open(
+                "https://www.google.com/maps/@3.6091036,98.517993,96m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D",
+                "_blank",
+                "noopener,noreferrer"
+              )
+            }
+            className="cursor-pointer"
+          >
+            <ContactCard
+              icon={FaMapMarkerAlt}
+              contactInfo="Jl. Dr Wahidin LK. III"
+              label="Alamat"
+              iconColor="yellow"
+              hoverColor="yellow"
+            />
+          </button>
         </div>
-
         <ContactCTA />
       </div>
     </div>

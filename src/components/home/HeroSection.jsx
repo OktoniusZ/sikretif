@@ -1,10 +1,14 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 import logo from "../../../public/images/beads.jpg";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "../../hooks/useTranslation";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative py-12 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-32">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-8 md:gap-12">
@@ -14,9 +18,11 @@ const HeroSection = () => {
             Handcrafted Beauty, <span className="text-[#3498db]">Beaded</span>{" "}
             to Perfection
           </h1>
+
           <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0">
-            Discover handcrafted beaded artistry, designed to add elegance and
-            charm to your everyday style.
+            {t(
+              "Discover handcrafted beaded artistry, designed to add elegance and charm to your everyday style."
+            )}
           </p>
 
           <motion.button
@@ -24,9 +30,7 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <NavLink to="/products" >
-              Explore Collection
-            </NavLink>
+            <NavLink to="/products">Explore Collection</NavLink>
           </motion.button>
         </div>
 

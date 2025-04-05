@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
-import logo from "../../public/Sikretif_logo.png"; 
+import logo from "../../public/Sikretif_logo.png";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,13 +18,13 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo on the left */}
           <div className="flex-shrink-0">
-            <NavLink to="/" >
-            <img src={logo} alt="sikretif_logo" className="h-24 w-24" />
+            <NavLink to="/">
+              <img src={logo} alt="sikretif_logo" className="h-24 w-24" />
             </NavLink>
           </div>
 
           {/* Links on the right (desktop) */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex items-center space-x-6">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -64,10 +65,14 @@ const Navbar = () => {
             >
               Contact
             </NavLink>
+            <div className="hidden md:block">
+              <LanguageSwitcher />
+            </div>
           </div>
 
-          {/* Hamburger menu (mobile) */}
-          <div className="md:hidden">
+          {/* Mobile menu button and language switcher */}
+          <div className="flex items-center space-x-4 md:hidden">
+            <LanguageSwitcher />
             <button
               onClick={toggleMenu}
               className="text-gray-800 focus:outline-none"
@@ -97,6 +102,7 @@ const Navbar = () => {
                   isActive ? "font-bold text-primary" : ""
                 }`
               }
+              onClick={toggleMenu}
             >
               Home
             </NavLink>
@@ -107,6 +113,7 @@ const Navbar = () => {
                   isActive ? "font-bold text-primary" : ""
                 }`
               }
+              onClick={toggleMenu}
             >
               Products
             </NavLink>
@@ -117,6 +124,7 @@ const Navbar = () => {
                   isActive ? "font-bold text-primary" : ""
                 }`
               }
+              onClick={toggleMenu}
             >
               Services
             </NavLink>
@@ -127,9 +135,14 @@ const Navbar = () => {
                   isActive ? "font-bold text-primary" : ""
                 }`
               }
+              onClick={toggleMenu}
             >
               Contact
             </NavLink>
+            <div className="pt-4 border-t border-gray-200">
+              <p className="text-sm text-gray-500 mb-2">Language:</p>
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </div>

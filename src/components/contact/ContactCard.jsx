@@ -34,27 +34,27 @@ const ContactCard = ({
   };
 
   return (
-    <div
-      className={`group bg-white rounded-lg border-b-4 border-primary shadow-md p-6 text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg ${colorClasses[hoverColor].border}`}
-    >
       <div
-        className={`w-16 h-16 rounded-full ${colorClasses[iconColor].iconBg} flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110`}
+        className={`group bg-white rounded-lg border-b-4 border-primary shadow-md p-6 text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg ${colorClasses[hoverColor].border}`}
       >
-        <Icon
-          className={`${colorClasses[iconColor].icon} text-2xl transition-all duration-300 group-hover:scale-125`}
-        />
+        <div
+          className={`w-16 h-16 rounded-full ${colorClasses[iconColor].iconBg} flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110`}
+        >
+          <Icon
+            className={`${colorClasses[iconColor].icon} text-2xl transition-all duration-300 group-hover:scale-125`}
+          />
+        </div>
+        <p
+          className={`text-gray-800 font-medium transition-colors duration-300 ${colorClasses[hoverColor].text}`}
+        >
+          {contactInfo}
+        </p>
+        <p
+          className={`text-gray-500 text-sm mt-1 transition-colors duration-300 ${colorClasses[hoverColor].label}`}
+        >
+          {label}
+        </p>
       </div>
-      <p
-        className={`text-gray-800 font-medium transition-colors duration-300 ${colorClasses[hoverColor].text}`}
-      >
-        {contactInfo}
-      </p>
-      <p
-        className={`text-gray-500 text-sm mt-1 transition-colors duration-300 ${colorClasses[hoverColor].label}`}
-      >
-        {label}
-      </p>
-    </div>
   );
 };
 

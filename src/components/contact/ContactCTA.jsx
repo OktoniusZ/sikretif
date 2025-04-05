@@ -4,7 +4,7 @@ import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 const ContactCTA = ({
   title = "Prefer to message us directly?",
-  whatsappNumber = "670422332235",
+  whatsappNumber = "+6281324582425",
   email = "hello@quillow.edu",
 }) => {
   return (

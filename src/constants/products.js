@@ -47,7 +47,7 @@ export const products = [
     colors: ["#6B7280", "#10B981"],
     isNew: false,
     image: images.bracelet_1a,
-    additionalImages: [],
+    additionalImages: [images.bracelet_1b],
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
@@ -60,7 +60,7 @@ export const products = [
     colors: ["#6B7280", "#10B981"],
     isNew: false,
     image: images.bracelet_2a,
-    additionalImages: [],
+    additionalImages: [images.bracelet_2b],
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
@@ -73,7 +73,7 @@ export const products = [
     colors: ["#6B7280", "#10B981"],
     isNew: false,
     image: images.bracelet_3a,
-    additionalImages: [],
+    additionalImages: [images.bracelet_3b],
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",

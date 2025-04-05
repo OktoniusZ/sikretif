@@ -4,6 +4,8 @@
 @theme {
   --color-primary: #3498db;
   --color-secondary: #2980b9;
+  --color-greenPrimary: #1abc9c;
+  --color-greenSecondary: #27ae60;
 }
 .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -14,3 +16,25 @@
     scrollbar-width: none;  /* Firefox */
   }
 
+/* SweetAlert Custom Styles */
+.swal2-popup {
+  background: #f8fafc !important; /* bg-slate-50 */
+  border-radius: 0.75rem !important; /* rounded-xl */
+}
+
+.swal2-title {
+  color: #1e293b !important; /* text-slate-800 */
+  font-size: 1.25rem !important; /* text-xl */
+  font-weight: 600 !important; /* font-semibold */
+}
+
+/* Language buttons - ensure visibility */
+.swal2-html-container .bg-green-500 {
+  background-color: #22c55e !important; /* bg-green-500 */
+  color: white !important;
+}
+
+.swal2-html-container .bg-blue-500 {
+  background-color: #3b82f6 !important; /* bg-blue-500 */
+  color: white !important;
+}
