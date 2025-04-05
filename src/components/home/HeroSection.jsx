@@ -15,22 +15,20 @@ const HeroSection = () => {
         {/* Text Content - Always full width on mobile, half on desktop */}
         <div className="w-full lg:w-1/2 order-2 lg:order-1 text-center lg:text-left">
           <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-            Handcrafted Beauty, <span className="text-[#3498db]">Beaded</span>{" "}
-            to Perfection
+            {t("Handcrafted Beauty,")} <span className="text-[#3498db]">{t("Beaded")}</span>{" "}
+            {t("to Perfection")}
           </h1>
-
           <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0">
             {t(
               "Discover handcrafted beaded artistry, designed to add elegance and charm to your everyday style."
             )}
           </p>
-
           <motion.button
             className="px-8 py-3 border-2 rounded-full font-medium bg-primary text-white hover:bg-primary hover:text-white transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <NavLink to="/products">Explore Collection</NavLink>
+            <NavLink to="/products">{t("Explore Collection")}</NavLink>
           </motion.button>
         </div>
 

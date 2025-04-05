@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import { products } from "../../constants/products";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "../../hooks/useTranslation";
 
-const categories = ["Flowers", "Bags", "Bracelets"];
 
 const ProductGrid = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -23,6 +24,8 @@ const ProductGrid = () => {
   const filteredProducts = products.filter(
     (product) => product.category === selectedCategory.toLowerCase()
   );
+  const { t } = useTranslation();
+  const categories = [t("Flowers"), t("Bags"), t("Bracelets")];
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -34,7 +37,7 @@ const ProductGrid = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our <span className="text-primary">Collection</span>
+          {t("Our")} <span className="text-primary">{t("Collection")}</span>
         </motion.h2>
 
         {/* Navigation Tabs */}
@@ -82,7 +85,7 @@ const ProductGrid = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <NavLink to='/products'>View All Products</NavLink>
+            <NavLink to="/products">View All Products</NavLink>
           </motion.button>
         </div>
       </div>

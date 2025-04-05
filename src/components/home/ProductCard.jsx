@@ -30,7 +30,7 @@ const ProductCard = ({
       <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col group">
         {/* Image Container */}
         <div
-          className="relative bg-gray-50 p-6 flex items-center justify-center aspect-square cursor-pointer"
+          className="relative bg-gray-50 h-96 flex items-center justify-center aspect-square cursor-pointer"
           onClick={handleProductClick}
         >
           {/* Product Image */}
@@ -38,7 +38,7 @@ const ProductCard = ({
             <motion.img
               src={product.image}
               alt={product.name}
-              className="w-4/5 h-4/5 object-contain"
+              className="w-full h-4/5 object-contain"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             />

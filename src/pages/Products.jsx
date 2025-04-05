@@ -59,14 +59,14 @@ const ProductsPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Mobile Filter Button */}
-          <button
+          {/* <button
             type="button"
             className="md:hidden flex items-center gap-2 text-gray-700 mb-4"
             onClick={() => setMobileFiltersOpen(true)}
           >
             <FiFilter className="h-5 w-5" />
             <span>Filters</span>
-          </button>
+          </button> */}
 
           {/* Category Navigation - Desktop */}
           <div className="hidden md:block w-64 flex-shrink-0">
@@ -149,6 +149,7 @@ const ProductsPage = () => {
           {/* Product Grid */}
           <div className="flex-1">
             {/* Category Title */}
+            {/* Product Grid Header - Now with combined filter/category button */}
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold text-gray-900">
                 {activeCategory === "all"
@@ -156,13 +157,16 @@ const ProductsPage = () => {
                   : activeCategory.charAt(0).toUpperCase() +
                     activeCategory.slice(1)}
               </h2>
+
+              {/* Mobile: Combined Category & Filter Button */}
               <div className="relative md:hidden">
-                <button className="flex items-center gap-2 text-gray-700">
+                <button
+                  className="flex items-center gap-2 text-gray-700 px-4 py-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 shadow-sm"
+                  onClick={() => setMobileFiltersOpen(true)}
+                >
+                  <FiFilter className="h-4 w-4" /> {/* Added filter icon */}
                   <span>
-                    {activeCategory === "all"
-                      ? "All"
-                      : activeCategory.charAt(0).toUpperCase() +
-                        activeCategory.slice(1)}
+                    {activeCategory === "all" ? "Filters" : activeCategory}
                   </span>
                   <FiChevronDown className="h-4 w-4" />
                 </button>

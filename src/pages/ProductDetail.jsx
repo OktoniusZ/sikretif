@@ -87,14 +87,15 @@ const ProductDetail = () => {
       icon: "info",
       showCancelButton: true,
       confirmButtonText: "Chat on WhatsApp",
+      buttonsStyling: false,
       cancelButtonText: "Continue Browsing",
       customClass: {
         popup: "rounded-lg shadow-lg",
         title: "text-lg font-bold",
         confirmButton:
-          "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md",
+          "bg-greenPrimary hover:bg-green-700 text-white px-4 py-2 rounded-md mr-4",
         cancelButton:
-          "border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-md",
+          "border bg-primary border-gray-300 hover:bg-gray-50 text-white px-4 py-2 rounded-md",
       },
     }).then((result) => {
       if (result.isConfirmed) {

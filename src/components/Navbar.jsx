@@ -46,16 +46,6 @@ const Navbar = () => {
               Products
             </NavLink>
             <NavLink
-              to="/service"
-              className={({ isActive }) =>
-                `text-gray-800 hover:text-primary ${
-                  isActive ? "font-bold text-primary" : ""
-                }`
-              }
-            >
-              Services
-            </NavLink>
-            <NavLink
               to="/contact"
               className={({ isActive }) =>
                 `text-gray-800 hover:text-primary ${
@@ -116,17 +106,6 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               Products
-            </NavLink>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                `text-gray-800 hover:text-primary ${
-                  isActive ? "font-bold text-primary" : ""
-                }`
-              }
-              onClick={toggleMenu}
-            >
-              Services
             </NavLink>
             <NavLink
               to="/contact"

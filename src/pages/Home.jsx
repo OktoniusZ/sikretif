@@ -8,7 +8,7 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans relative overflow-hidden pt-8">
+    <div className="min-h-screen bg-white text-black font-sans relative overflow-hidden pt-8 sc">
       <h1 className="text-center text-2xl font-bold">{t("welcome")}</h1>
       <HeroSection />
       <BrandMessage />

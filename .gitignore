@@ -8,6 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 constants
+context
+hooks
+translations
 
 node_modules
 dist
