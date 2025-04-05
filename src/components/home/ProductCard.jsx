@@ -70,7 +70,7 @@ const ProductCard = ({
         {/* Product Info */}
         <div className="p-4 flex-grow flex flex-col">
           <h3
-            className="font-bold text-lg mb-1 hover:text-blue-600 transition-colors cursor-pointer"
+            className="font-bold text-lg mb-1 hover:text-primary transition-colors cursor-pointer"
             onClick={handleProductClick}
           >
             {product.name}

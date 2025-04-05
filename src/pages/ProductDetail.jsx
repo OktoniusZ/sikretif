@@ -13,6 +13,20 @@ import {
 import UnderDevelopmentPopup from "../components/UnderDevelopment";
 import Swal from "sweetalert2";
 
+const extractPriceNumber = (priceString) => {
+  // Remove all non-numeric characters except decimal point
+  const numericValue = parseFloat(priceString.replace(/[^0-9.]/g, ""));
+  return isNaN(numericValue) ? 0 : numericValue;
+};
+
+const formatPrice = (amount) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(amount);
+};
+
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -29,6 +43,14 @@ const ProductDetail = () => {
     fabric: false,
     delivery: false,
   });
+
+  const [basePrice] = useState(extractPriceNumber(product.price));
+  const [totalPrice, setTotalPrice] = useState(basePrice);
+
+  // Add this useEffect to update price when quantity changes
+  useEffect(() => {
+    setTotalPrice(basePrice * quantity);
+  }, [quantity, basePrice]);
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
@@ -51,7 +73,9 @@ const ProductDetail = () => {
     );
   }
   const whatsappNumber = "00000"; // Replace with your number
-  const whatsappMessage = `Hi, I'd like to place an order for: ${product.name} (${product.price})`;
+  const whatsappMessage = `Hi, I'd like to place an order for: ${
+    product.name
+  } (${quantity} × ${formatPrice(basePrice)} = ${formatPrice(totalPrice)})`;
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
   )}`;
@@ -164,10 +188,12 @@ const ProductDetail = () => {
 
           {/* Price */}
           <div className="space-y-1">
-            <p className="text-2xl font-bold">{product.price}</p>
+            <p className="text-2xl font-bold">
+              {formatPrice(totalPrice)}{" "}
+              {quantity > 1 && `(${quantity} × ${formatPrice(basePrice)})`}
+            </p>
             <p className="text-sm text-gray-500">
-              Member price: Rp
-              {(parseFloat(product.price.replace("$", "")) * 0.9).toFixed(2)}
+              Member price: {formatPrice(totalPrice * 0.9)}
             </p>
           </div>
 
@@ -201,7 +227,7 @@ const ProductDetail = () => {
             </button>
             <button
               onClick={showAlert}
-              className="bg-black text-white rounded-lg py-3 font-medium hover:bg-gray-800 active:bg-gray-900"
+              className="bg-primary text-white rounded-lg py-3 font-medium hover:bg-secondary"
             >
               Buy Now
             </button>

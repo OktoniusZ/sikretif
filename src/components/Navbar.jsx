@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
-import logo from "../../public/images/Sikretif_logo.png"; 
+import logo from "../../public/Sikretif_logo.png"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
