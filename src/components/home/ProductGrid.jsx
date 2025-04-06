@@ -6,13 +6,13 @@ import { products } from "../../constants/products";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "../../hooks/useTranslation";
 
-
 const ProductGrid = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedColors, setSelectedColors] = useState(
     Array(products.length).fill(0)
   );
   const [selectedCategory, setSelectedCategory] = useState("Flowers");
+  const maxProductsToShow = 3; // Only show 3 products per category
 
   const handleColorSelect = (productIndex, colorIndex) => {
     const newSelectedColors = [...selectedColors];
@@ -20,10 +20,11 @@ const ProductGrid = () => {
     setSelectedColors(newSelectedColors);
   };
 
-  // Filter products based on selected category
-  const filteredProducts = products.filter(
-    (product) => product.category === selectedCategory.toLowerCase()
-  );
+  // Filter products based on selected category and limit to 3
+  const filteredProducts = products
+    .filter((product) => product.category === selectedCategory.toLowerCase())
+    .slice(0, maxProductsToShow); // <-- Only this line changes!
+
   const { t } = useTranslation();
   const categories = [t("Flowers"), t("Bags"), t("Bracelets")];
 
@@ -57,7 +58,7 @@ const ProductGrid = () => {
           ))}
         </div>
 
-        {/* Product Grid */}
+        {/* Product Grid (now only shows 3 items max) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, index) => (
@@ -78,7 +79,7 @@ const ProductGrid = () => {
           )}
         </div>
 
-        {/* View More Button */}
+        {/* View More Button (now visible even with 3 items) */}
         <div className="text-center mt-12">
           <motion.button
             className="px-8 py-3 border-2 rounded-full font-medium hover:bg-primary hover:text-white transition-colors duration-300"

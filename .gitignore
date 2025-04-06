@@ -7,12 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-constants
-context
-hooks
-translations
+
 
 node_modules
+src/constants/
+src/context/
+src/hooks/
+src/translations/
 dist
 dist-ssr
 *.local

@@ -12,7 +12,7 @@ const Home = () => {
       <h1 className="text-center text-2xl font-bold">{t("welcome")}</h1>
       <HeroSection />
       <BrandMessage />
-      <ProductGrid />
+      <ProductGrid isHomePage={true}/>
     </div>
   );
 };

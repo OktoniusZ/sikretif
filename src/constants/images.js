@@ -1,5 +1,5 @@
 // src/utils/imageImports.js
-const numbers = [1, 2, 3, 4];
+const numbers = Array.from({length: 32}, (_, i) => i + 1);
 const letters = ['a', 'b', 'c', 'd'];
 
 const images = {};
