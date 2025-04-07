@@ -3,6 +3,7 @@ import { FiHeart, FiShoppingBag } from "react-icons/fi";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import LazyMotionImage from "../LazyMotionImage";
 
 const ProductCard = ({
   product,
@@ -35,14 +36,21 @@ const ProductCard = ({
         >
           {/* Product Image */}
           <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
-            <motion.img
+            <LazyMotionImage
               src={product.image}
               alt={product.name}
               className="w-full h-4/5 object-contain"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             />
-
+             {/* <motion.img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-4/5 object-contain"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+              loading="lazy"
+            /> */}
             {/* Quick Actions */}
             <div
               className={`absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 flex items-center justify-center gap-4 transition-all duration-300 ${

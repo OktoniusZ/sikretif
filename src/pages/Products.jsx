@@ -100,7 +100,7 @@ const ProductsPage = () => {
               exit={{ opacity: 0 }}
             >
               <div
-                className="absolute inset-0 bg-black bg-opacity-25"
+                className="absolute inset-0"
                 onClick={() => setMobileFiltersOpen(false)}
               />
               <motion.div
