@@ -18,6 +18,13 @@ numbers.forEach(num => {
   });
 });
 
+// Generate bracelet image paths
+numbers.forEach(num => {
+  letters.forEach(letter => {
+    images[`strap_${num}${letter}`] = `/images/phoneStraps/strap${num}-${letter}.jpg`;
+  });
+});
+
 // Generate bags image paths
 numbers.forEach(num => {
   letters.forEach(letter => {

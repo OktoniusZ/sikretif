@@ -93,9 +93,9 @@ const ProductDetail = () => {
         popup: "rounded-lg shadow-lg",
         title: "text-lg font-bold",
         confirmButton:
-          "bg-greenPrimary hover:bg-green-700 text-white px-4 py-2 rounded-md mr-4",
+          "bg-greenPrimary hover:bg-greenSecondary text-white px-4 py-2 rounded-md mr-4",
         cancelButton:
-          "border bg-primary border-gray-300 hover:bg-gray-50 text-white px-4 py-2 rounded-md",
+          "border bg-primary border-gray-300 hover:bg-secondary text-white px-4 py-2 rounded-md",
       },
     }).then((result) => {
       if (result.isConfirmed) {

@@ -3,8 +3,11 @@ import { FaWhatsapp, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import ContactHeader from "../components/contact/ContactHeader";
 import ContactCard from "../components/contact/ContactCard";
 import ContactCTA from "../components/contact/ContactCTA";
+import { useTranslation } from "../../src/hooks/useTranslation";
 
 const ContactPage = () => {
+  const { t } = useTranslation();
+
   const whatsappNumber = "+6281324582425";
   const email = "sikretif7@gmail.com";
 
@@ -13,17 +16,10 @@ const ContactPage = () => {
       {/* Centered card container */}
       <div className="bg-white rounded-xl shadow-sm p-8 sm:p-10 w-full max-w-4xl">
         <ContactHeader
-          badgeText="Contact Information"
-          title="Get in Touch with Us"
-          description="Have a question or a special request? We'd love to hear from you!
-          Whether you're looking for a custom handmade beaded piece, need
-          assistance with an order, or just want to say hello, feel free to
-          reach out. Our team is here to help and ensure you have the best
-          experience with our handcrafted collections. 💖✨"
+          badgeText={t("Contact Information")}
+          title={t("Get in Touch with Us")}
+          description={t("Have a question or a special request? We'd love to hear from you! Whether you're looking for a handmade beaded piece, need assistance with an order, or just want to say hello, feel free to reach out. Our team is here to help and ensure you have the best experience with our handcrafted collections. 💖✨")}
         />
-
-        {/* Three contact cards */}
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           <button
             onClick={() =>
@@ -73,13 +69,13 @@ const ContactPage = () => {
             <ContactCard
               icon={FaMapMarkerAlt}
               contactInfo="Jl. Dr Wahidin LK. III"
-              label="Alamat"
+              label={t("Address")}
               iconColor="yellow"
               hoverColor="yellow"
             />
           </button>
         </div>
-        <ContactCTA />
+        <ContactCTA Whatsappmes={t("WhatsApp Us")} emailMes={t("Email Us")} />
       </div>
     </div>
   );

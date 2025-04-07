@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import { products } from "../../constants/products";
@@ -11,8 +10,11 @@ const ProductGrid = () => {
   const [selectedColors, setSelectedColors] = useState(
     Array(products.length).fill(0)
   );
-  const [selectedCategory, setSelectedCategory] = useState("Flowers");
-  const maxProductsToShow = 3; // Only show 3 products per category
+  const [selectedCategory, setSelectedCategory] = useState({
+    key: "flowers",
+    label: "Flowers"
+  });
+  const maxProductsToShow = 3;
 
   const handleColorSelect = (productIndex, colorIndex) => {
     const newSelectedColors = [...selectedColors];
@@ -20,20 +22,24 @@ const ProductGrid = () => {
     setSelectedColors(newSelectedColors);
   };
 
-  // Filter products based on selected category and limit to 3
   const filteredProducts = products
-    .filter((product) => product.category === selectedCategory.toLowerCase())
-    .slice(0, maxProductsToShow); // <-- Only this line changes!
+    .filter((product) => product.category === selectedCategory.key)
+    .slice(0, maxProductsToShow);
 
   const { t } = useTranslation();
-  const categories = [t("Flowers"), t("Bags"), t("Bracelets")];
+  const categories = [
+    { key: "flowers", label: t("Flowers") },
+    { key: "bags", label: t("Bags") },
+    { key: "bracelets", label: t("Bracelets") },
+    { key: "phoneStraps", label: t("Phone Straps") }
+  ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <motion.h2
-          className="text-3xl sm:text-4xl font-bold text-center mb-8"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -41,25 +47,27 @@ const ProductGrid = () => {
           {t("Our")} <span className="text-primary">{t("Collection")}</span>
         </motion.h2>
 
-        {/* Navigation Tabs */}
-        <div className="flex justify-center space-x-4 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`px-6 py-2 border-2 rounded-full font-medium transition-colors duration-300 ${
-                selectedCategory === category
-                  ? "bg-primary text-white"
-                  : "border-gray-300 hover:bg-gray-200"
-              }`}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
+        {/* Wrapping Navigation Tabs */}
+        <div className="mb-6 md:mb-8">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+            {categories.map((category) => (
+              <button
+                key={category.key}
+                className={`px-4 py-2 text-sm sm:text-base border-2 rounded-full font-medium transition-colors duration-200 whitespace-nowrap ${
+                  selectedCategory.key === category.key
+                    ? "bg-primary text-white border-primary"
+                    : "border-gray-200 hover:bg-gray-100 text-gray-700"
+                }`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Product Grid (now only shows 3 items max) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, index) => (
               <ProductCard
@@ -79,14 +87,14 @@ const ProductGrid = () => {
           )}
         </div>
 
-        {/* View More Button (now visible even with 3 items) */}
-        <div className="text-center mt-12">
+        {/* View More Button */}
+        <div className="text-center mt-8 md:mt-12">
           <motion.button
-            className="px-8 py-3 border-2 rounded-full font-medium hover:bg-primary hover:text-white transition-colors duration-300"
+            className="px-6 py-2 sm:px-8 sm:py-3 text-sm sm:text-base border-2 rounded-full font-medium hover:bg-primary hover:text-white hover:border-primary transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <NavLink to="/products">View All Products</NavLink>
+            <NavLink to="/products">{t("View All Products")}</NavLink>
           </motion.button>
         </div>
       </div>

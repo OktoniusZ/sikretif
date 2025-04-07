@@ -3,49 +3,65 @@ import { images } from "./images";
 const categories = {
   bracelets: {
     name: "Classic Comfort Bracelet",
-    price: "Rp99.99",
+    price: "Rp10,000",
     colors: ["#6B7280", "#10B981"],
     imagePrefix: "bracelet_",
-    imageLetters: ['b'], // Bracelets: only 'b' as additional image
-    totalItems: 33, // Now supports 33 bracelets
+    imageLetters: ['b'], 
+    totalItems: 9, 
+  },
+  phoneStraps: {
+    name: "Premium Phone Strap",
+    price: "Rp15,000",
+    colors: ["#000000", "#F59E0B", "#B45309"],
+    imagePrefix: "strap_",
+    imageLetters: ['b'], 
+    totalItems: 12,
   },
   flowers: {
     name: "Elegant Flower Bouquet",
-    price: "Rp149.99",
+    price: "Rp150,000",
     colors: ["#EF4444", "#F59E0B"],
     imagePrefix: "bunga_",
-    imageLetters: ['b', 'c', 'd'], // Flowers: 'b', 'c', 'd' as additional images
-    totalItems: 7, // Flowers remain at 16
+    imageLetters: ['b', 'c', 'd'], 
+    totalItems: 7, 
   },
 };
 
 export const products = [];
 
 Object.entries(categories).forEach(([category, props]) => {
-  for (let id = 1; id <= props.totalItems; id++) { // Use props.totalItems instead of hardcoded 16
-    const productId = category === "bracelets" ? id : id + 100; // Offset flower IDs to avoid clashes (e.g., 101-116)
+  for (let id = 1; id <= props.totalItems; id++) {
+    // Assign unique IDs (bracelets: 1-9, phoneStraps: 101-112, flowers: 201-207)
+    const productId = 
+      category === "bracelets" ? id : 
+      category === "phoneStraps" ? id + 100 : 
+      id + 200;
 
-    // Generate additionalImages dynamically
+    // Generate additional images (e.g. strap_1b.jpg, strap_1c.jpg)
     const additionalImages = props.imageLetters
       .map(letter => images[`${props.imagePrefix}${id}${letter}`])
-      .filter(Boolean); // Filter out undefined (if an image is missing)
+      .filter(Boolean);
 
-    // Ensure the main image exists
+    // Get main image (e.g. strap_1a.jpg)
     const mainImage = images[`${props.imagePrefix}${id}a`];
     if (!mainImage) {
       console.warn(`Missing main image for ${category} ID ${id}: ${props.imagePrefix}${id}a`);
-      continue; // Skip if main image is missing
+      continue;
     }
 
     products.push({
       id: productId,
-      name: `${props.name} ${id}`, // Added ID to distinguish items (e.g., "Classic Comfort Bracelet 1")
+      name: `${props.name} #${id}`,
       price: props.price,
       colors: props.colors,
       image: mainImage,
       additionalImages,
-      description: "Lorem ipsum dolor sit amet...",
-      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      description: "High-quality handmade product with premium materials",
+      details: [
+        "Durable materials designed for daily use",
+        "Adjustable sizing for perfect fit",
+        "Handcrafted with attention to detail"
+      ],
       category: category,
     });
   }
