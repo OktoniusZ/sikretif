@@ -43,7 +43,7 @@ const ProductCard = ({
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             />
-             {/* <motion.img
+            {/* <motion.img
               src={product.image}
               alt={product.name}
               className="w-full h-4/5 object-contain"

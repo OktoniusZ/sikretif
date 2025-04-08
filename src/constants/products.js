@@ -18,7 +18,7 @@ const categories = {
     totalItems: 12,
   },
   flowers: {
-    name: "Elegant Flower Bouquet",
+    name: "Elegant Flower",
     price: "Rp150,000",
     colors: ["#EF4444", "#F59E0B"],
     imagePrefix: "bunga_",
@@ -59,7 +59,7 @@ Object.entries(categories).forEach(([category, props]) => {
       description: "High-quality handmade product with premium materials",
       details: [
         "Durable materials designed for daily use",
-        "Adjustable sizing for perfect fit",
+        "Adjustable sizing for perfect fit (for bracelets and phone straps)",
         "Handcrafted with attention to detail"
       ],
       category: category,
