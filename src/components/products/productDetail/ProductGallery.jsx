@@ -11,7 +11,7 @@ const ProductGallery = ({ product }) => {
         <motion.img
           src={selectedImage}
           alt={product.name}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain filter brightness-100"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         />

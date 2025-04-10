@@ -42,7 +42,7 @@ const LazyMotionImage = ({ src, alt, className, ...motionProps }) => {
         <motion.img
           src={src}
           alt={alt}
-          className={`w-full h-full ${className}`}
+          className={`w-full h-full ${className} filter brightness-100`}
           onLoad={() => setIsLoaded(true)}
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
