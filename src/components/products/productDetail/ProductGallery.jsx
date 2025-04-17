@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
@@ -58,7 +59,7 @@ const ProductGallery = ({ product }) => {
         <motion.img
           src={allImages[currentImageIndex]}
           alt={product.name}
-          className="w-full h-full object-contain filter brightness-100 cursor-zoom-in"
+          className="w-full h-full object-contain filter  cursor-zoom-in"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
           onClick={toggleFullscreen}
@@ -76,7 +77,7 @@ const ProductGallery = ({ product }) => {
             <img
               src={img}
               alt={`${product.name} view ${index + 1}`}
-              className={`w-full h-full object-contain ${
+              className={`w-full h-full object-contain brightness-100 ${
                 currentImageIndex === index ? "border-2 border-black" : ""
               }`}
             />
@@ -134,7 +135,7 @@ const ProductGallery = ({ product }) => {
               <img
                 src={allImages[currentImageIndex]}
                 alt={product.name}
-                className="max-w-full max-h-full object-contain"
+                className="max-w-full max-h-full brightness-100 object-contain"
               />
             </motion.div>
 
