@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
 
 const ProductGallery = ({ product }) => {
   const allImages = [product.image, ...(product.additionalImages || [])];
@@ -13,11 +17,15 @@ const ProductGallery = ({ product }) => {
   const toggleFullscreen = () => setIsFullscreen(!isFullscreen);
 
   const goToNextImage = () => {
-    setCurrentImageIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
+    setCurrentImageIndex((prev) =>
+      prev === allImages.length - 1 ? 0 : prev + 1
+    );
   };
 
   const goToPrevImage = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? allImages.length - 1 : prev - 1
+    );
   };
 
   // Handle keyboard navigation
@@ -25,13 +33,13 @@ const ProductGallery = ({ product }) => {
     if (!isFullscreen) return;
 
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') goToNextImage();
-      if (e.key === 'ArrowLeft') goToPrevImage();
-      if (e.key === 'Escape') toggleFullscreen();
+      if (e.key === "ArrowRight") goToNextImage();
+      if (e.key === "ArrowLeft") goToPrevImage();
+      if (e.key === "Escape") toggleFullscreen();
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isFullscreen]);
 
   // Touch event handlers for mobile swipe
@@ -94,36 +102,45 @@ const ProductGallery = ({ product }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
+            onClick={toggleFullscreen}
           >
-            {/* Close button - responsive positioning */}
+            {/* Close button - enhanced for mobile */}
             <button
               onClick={toggleFullscreen}
-              className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 rounded-full bg-white bg-opacity-10 hover:bg-opacity-20 transition-all text-black"
+              className="absolute top-4 right-4 p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all text-black z-10"
               aria-label="Close fullscreen"
             >
-              <XMarkIcon className="h-5 w-5 sm:h-6 sm:w-6" />
+              <XMarkIcon className="h-6 w-6 sm:h-8 sm:w-8" />
             </button>
 
-            {/* Navigation arrows - responsive size and positioning */}
+            {/* Navigation arrows - improved mobile visibility */}
             <button
-              onClick={(e) => { e.stopPropagation(); goToPrevImage(); }}
-              className="absolute left-2 sm:left-4 p-2 rounded-full bg-white bg-opacity-10 hover:bg-opacity-20 transition-all text-black"
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevImage();
+              }}
+              className="absolute left-4 p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all text-black z-10"
               aria-label="Previous image"
+              style={{ top: "50%", transform: "translateY(-50%)" }}
             >
-              <ChevronLeftIcon className="h-6 w-6 sm:h-8 sm:w-8" />
+              <ChevronLeftIcon className="h-8 w-8 sm:h-10 sm:w-10" />
             </button>
 
             <button
-              onClick={(e) => { e.stopPropagation(); goToNextImage(); }}
-              className="absolute right-2 sm:right-4 p-2 rounded-full bg-white bg-opacity-10 hover:bg-opacity-20 transition-all text-black"
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNextImage();
+              }}
+              className="absolute right-4 p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all text-black z-10"
               aria-label="Next image"
+              style={{ top: "50%", transform: "translateY(-50%)" }}
             >
-              <ChevronRightIcon className="h-6 w-6 sm:h-8 sm:w-8" />
+              <ChevronRightIcon className="h-8 w-8 sm:h-10 sm:w-10" />
             </button>
 
-            {/* Image container with touch events */}
+            {/* Image container with improved touch handling */}
             <motion.div
-              className="w-full h-full flex items-center justify-center touch-none"
+              className="w-full h-full flex items-center justify-center touch-none select-none"
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
@@ -131,17 +148,37 @@ const ProductGallery = ({ product }) => {
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
+              onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <motion.img
                 src={allImages[currentImageIndex]}
                 alt={product.name}
-                className="max-w-full max-h-full brightness-100 object-contain"
+                className="max-w-full max-h-[80vh] sm:max-h-[90vh] object-contain"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                draggable="false"
               />
             </motion.div>
 
-            {/* Image counter - responsive text size */}
-            <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-xs sm:text-sm">
-              {currentImageIndex + 1} / {allImages.length}
+            {/* Enhanced image counter with dot indicators */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
+              {/* Dot indicators for mobile */}
+              <div className="flex gap-2 sm:hidden">
+                {allImages.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-2 w-2 rounded-full transition-colors ${
+                      index === currentImageIndex ? "bg-white" : "bg-gray-500"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Text counter */}
+              <div className="bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm sm:text-base">
+                {currentImageIndex + 1} / {allImages.length}
+              </div>
             </div>
           </motion.div>
         )}
